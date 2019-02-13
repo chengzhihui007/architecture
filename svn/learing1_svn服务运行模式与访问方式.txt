@@ -1,0 +1,16 @@
+①svn服务端运行方式
+	1.独立服务器访问  例如： svn://svn.etiantian.org/sadoc;
+	2.借助apache等http服务 例如： http://svn.etiantian.org/sadoc;
+	   a.单独安装apache+svn,b.CSVN(apache+svn)是一个单独的整合的软件，带web界面管理的SVN软件。
+	3.本地直接访问  例如：file://application/svndata/sadoc
+②svn客户端访问方式
+	file:// 直接通过本地磁盘或者网络磁盘访问版本库
+	http:// 通过WebDAV协议访问支持Subversion的Apache服务器。
+	https:// 与http://相似，但是用SSL加密访问。
+	svn:// 通过TCP/IP自定义协议访问svnserver服务器。
+	svn+ssh:// 通过认证并加密的TCP/IP自定义协议访问svnserve服务器。
+③SVN档案库数据格式
+	2种方式：BDB(一种事物安全型表类型)和FSFS(一种不需要数据库的存储系统)。因为BDB方式在服务器中断时，有可能锁住数据，所以还是FSFS方式更安全一点。 
+	BDB: 不能在通过网络共享的文件系统上使用。 Subversion1.2版本以前的缺省版本库格式。
+	FSFS: 可以使用网络文件系统(例如NFS或SMBFS).Subverson1.2版本及其以后的缺省版本库格式。
+

@@ -1,0 +1,14 @@
+功能性的,没有特殊需求的用yum 安装
+①rpm -qa subversion
+如果没有 则执行 yum -y install subversion
+/rpm包下载后不清楚方法： sed -i 's#keepcache=0#keepcache=1#g' /etc/yu.conf
+keepcache=1 //rpm包下载后不清除
+② 配置并启动svn
+	建立svn版本库数据存储根目录(svndata)及用户、密码权限目录(svnpasswd)
+	mkdir -p /application/svndata
+	mkdir -p /application/svnpasswd
+	启动SVN服务指定服务的SVN根目录
+	svnserve -d -r /application/svndata/
+	可以查看svnserve 命令帮助，了解相关启动参数。
+	查看svn是否启动 ps -ef | grep svn
+	检测svn端口 nestat -lnt | grep 3690 或者 netstat -lntup | grep svn 或者 netstat -lntup|grep 3690 或者 lsof -i :3690
