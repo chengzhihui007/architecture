@@ -1,0 +1,42 @@
+vim ~/.bashrc
+在文件尾部，添加一下几句代码：
+mkdir -p ~/.trash
+alias rm=trash
+alias r=trash
+alias rl='ls ~/.trash/'
+alias ur=undelfile
+
+undelfile()
+{
+    mv -i ~/.trash/$@ ./
+}
+
+trash()
+{
+    mv -i $@ ~/.trash/
+}
+
+cleartrash()
+{
+    read -p "clear sure?[n]" confirm
+    [ $confirm == 'y' ] || [ $confirm == 'Y' ] && /bin/rm -rf ~/.trash/*
+}
+
+
+
+修改完毕之后，生效： source ~/.bashrc
+
+
+例如： 删除文件  touch file1 file2 file3 
+		 ls
+		 rm file1 file2
+		 r file3 
+	查看回收站文件  rl
+	还原被删除的文件 rl
+			 ur 
+		         rl
+        清空回收站	rm  file1 file2 file3
+			rl
+			 cleartrash
+			 rl
+通过以上这些步骤，即可。
